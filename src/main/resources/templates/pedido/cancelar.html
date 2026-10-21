@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cancelar Pedido</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Cancelar Pedido</h1>
+
+    <div class="alert alert-danger">
+        <p>Tem certeza que deseja cancelar o pedido nº <strong th:text="${pedido.id}"></strong>?
+           Os itens serão devolvidos ao estoque.</p>
+    </div>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Cliente</th>
+            <td th:text="${pedido.cliente.nome}"></td>
+        </tr>
+        <tr>
+            <th>Data</th>
+            <td th:text="${#temporals.format(pedido.data_pedido, 'dd/MM/yyyy HH:mm')}"></td>
+        </tr>
+        <tr>
+            <th>Valor Total</th>
+            <td th:text="${#numbers.formatCurrency(pedido.valorTotal)}"></td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td th:text="${pedido.status}"></td>
+        </tr>
+    </table>
+
+    <form th:action="@{/pedidos/cancelar/{id}(id=${pedido.id})}" method="post">
+        <button type="submit" class="btn btn-danger">Confirmar Cancelamento</button>
+        <a th:href="@{/pedidos}" class="btn btn-secondary">Voltar</a>
+    </form>
+</div>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
