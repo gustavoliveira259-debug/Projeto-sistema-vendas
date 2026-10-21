@@ -8,13 +8,12 @@
 </head>
 
 <body>
-<div th:replace="~{fragments/navbar :: navbar}"></div>
 
 <div class="container mt-4">
 
     <h1>Clientes</h1>
 
-    <a class="btn btn-primary mb-3" th:if="${isAdmin}"
+    <a class="btn btn-primary mb-3"
        th:href="@{/clientes/novo}">
         Novo Cliente
     </a>
@@ -34,7 +33,7 @@
                 <th>Cidade</th>
                 <th>UF</th>
                 <th>CEP</th>
-                <th th:if="${isAdmin}">Ações</th>
+                <th>Ações</th>
             </tr>
         </thead>
 
@@ -64,7 +63,7 @@
 
                 <td th:text="${cliente.cep}"></td>
 
-                <td th:if="${isAdmin}">
+                <td>
                     <a class="btn btn-sm btn-warning"
                        th:href="@{/clientes/edit/{id}(id=${cliente.id})}">
                         Editar

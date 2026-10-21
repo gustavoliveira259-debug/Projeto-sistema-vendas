@@ -8,7 +8,6 @@
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
-<div th:replace="~{fragments/navbar :: navbar}"></div>
 <div class="container mt-5">
     <h2 th:text="${produto.id == null} ? 'Novo Produto' : 'Editar Produto'"></h2>
     <form th:action="${produto.id == null} ? @{/produtos/novo} : @{/produtos/edit/{id}(id=${produto.id})}" th:object="${produto}" method="post">
