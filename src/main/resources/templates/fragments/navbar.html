@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="navbar" class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">Sistema de Vendas</a>
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" th:href="@{/clientes}">Clientes</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/produtos}">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/pedidos}">Pedidos</a></li>
+        </ul>
+        <span class="navbar-text me-3">
+            <span th:text="${usuarioLogado}"></span>
+            <span class="badge bg-secondary" th:text="${isAdmin} ? 'ADMIN' : 'PADRÃO'"></span>
+        </span>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-outline-light btn-sm">Sair</button>
+        </form>
+    </div>
+</nav>
+</body>
+</html>

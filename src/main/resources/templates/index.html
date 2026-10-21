@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Vendas</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="container mt-4">
+    <h1>Bem-vindo, <span th:text="${usuarioLogado}"></span></h1>
+    <p th:if="${isAdmin}">Você tem acesso completo ao sistema.</p>
+    <p th:unless="${isAdmin}">Você pode consultar clientes e produtos e gerenciar pedidos.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-4 mb-3">
+            <a class="btn btn-outline-primary w-100 p-4" th:href="@{/clientes}">Clientes</a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a class="btn btn-outline-primary w-100 p-4" th:href="@{/produtos}">Produtos</a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a class="btn btn-outline-primary w-100 p-4" th:href="@{/pedidos}">Pedidos</a>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
